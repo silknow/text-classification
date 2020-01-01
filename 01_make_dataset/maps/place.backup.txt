@@ -1,0 +1,298 @@
+england (made);uk
+great britain (made);uk
+china (made);china
+iran (made);iran
+france (made);france
+india (made);india
+turkey (made);turkey
+japan (made);japan
+italy (made);italy
+london (made);uk
+spitalfields (made);uk
+varanasi (made);india
+spitalfields (weaving);uk
+beijing;china
+madras (made);india
+ahmedabad (made);india
+bangalore (made);india
+thanjavur (made);india
+florence (made);italy
+paris (made);france
+sindh (made);india
+assam (made);india
+spain (made);spain
+lahore (made);india
+hyderabad (made);india
+brussels (made);belgium
+south india (made);india
+azerbaijan (made);azerbaijan
+delhi (made);india
+coventry (made);uk
+london (printed);uk
+beijing (made);china
+germany (made);germany
+paisley (made);uk
+gujarat (made);india
+surat (made);india
+punjab (made);india
+spitalfields (woven);uk
+lyon (made);france
+united kingdom (made);uk
+russia (made);russia
+shache (made);china
+burma (made);india
+france (weaving);france
+britain (made);uk
+england (weaving);uk
+macclesfield (made);uk
+tiruchchirappalli (made);
+gauhati (made);india
+aurangabad (made);india
+dhaka (made);india
+lincolnshire (made);uk
+murshidabad (made);india
+bengal (made);india
+paris (woven);france
+england (embroidered);uk
+netherlands (made);netherlands
+bhagalpur (made);
+kutch (made);india
+derby (made);uk
+greece (made);greece
+tibet (made);india
+malaysia (made);malaysia
+warwickshire (made);uk
+sheffield (made);uk
+england;uk
+sibsagar (made);india
+europe (made);NaN
+baharampur (made);india
+España - / Cataluña -';spain
+Sevilla(Andalucía, España);spain
+... sin confirmar - / España -;spain
+Egipto -;africa
+India - / Calcuta -;india
+Italia -;italy
+España - / Valencia -;spain
+India -;india
+Francia -;france
+Al-Andalus -;spain
+Francia - / Lyon -;france
+España -;spain
+Italia - / Florencia -;italy
+Extremo Oriente - / China -;china
+... sin confirmar - / India -;india
+Extremo Oriente - / China - / Cantón - / Macao -;china
+... sin confirmar - / Italia -;italy
+Bilbao(Bizkaia, País Vasco);spain
+... sin confirmar - / Extremo Oriente - / China -;china
+... sin confirmar - / Francia -;france
+Irán -;iran
+India - / Benares -';india
+Cataluña -;spain
+Extremo Oriente - / Japón -';japan
+Egipto - / Akhmim -;africa
+Italia - / Venecia -;italy
+Huelva(Andalucía, España);spain
+Al-Andalus - / Almería -;spain
+Al-Andalus - / Granada -;spain
+... sin confirmar - / Al-Andalus - / Granada -;spain
+... sin confirmar - / Egipto -;africa
+Lyon -;france
+... sin confirmar - / Italia - / Génova -;italy
+... sin confirmar - / Italia - / Venecia -;italy
+... sin confirmar - / Al-Andalus - / Toledo -;spain
+Alemania - / Colonia -;germany
+... sin confirmar - / Al-Andalus -;spain
+... sin confirmar - / España - / Italia - / Sicilia -;italy
+Irán - / Ravy -;iran
+... sin confirmar - / España - / Toledo -;spain
+Toledo;spain
+... sin confirmar - / Francia - / Lyon -;france
+... sin confirmar - / España - / Burgo de Osma -;spain
+... sin confirmar - / Irán -;iran
+france, rhône-alpes, loire, saint-etienne (lieu de création);france
+españa - / italia -;nan
+españa -;spain
+españa - / cataluña -;spain
+... sin confirmar - / españa - / francia - / italia -;nan
+peshawar (made);india
+genoa (made);italy
+crete (made);greece
+madurai (made);india
+france (manufactured);france
+great britain (weaving);uk
+france (woven);france
+india (weaving);india
+great britain (printed);uk
+chanderi (made);india
+nagpur (made);india
+bombay (made);india
+... sin confirmar - / españa - / italia -;nan
+flanders (made);belgium
+france (embroidered);france
+pakistan (made);india
+mortlake (made);uk
+birmingham (made);uk
+india - / benares -;india
+mortlake (made);uk
+darvel (made);uk
+kashmir (made);india
+guangzhou (made);china
+france (embroidered);france
+kyoto (made);japan
+guangdong (weaving);china
+halifax (made);uk
+coimbatore (made);india
+bursa (made);turkey
+marruecos - / marroc - fès -;africa
+baluchistan (made);india
+magreb -;africa
+thana (made);india
+turquía - / bursa -;turkey
+darvel (manufactured);uk
+morocco (made);africa
+dharwar (made);india
+birmingham (printed);uk
+extremo oriente - / japón -;japan
+triplicane (made);india
+agra (made);india
+túnez -;africa
+... sin confirmar - / magreb -;africa
+extremo oriente - / japón -;japan
+turquía - / bursa -;turkey
+magreb - / marruecos -;africa
+marruecos -';africa
+marroc - fès -;africa
+... sin confirmar - / marruecos - / marroc - fès -;africa
+... sin confirmar - / magreb - / túnez -;africa
+magreb - / túnez -;africa
+turquía -;turkey
+francia - / parís -;france
+... sin confirmar - / birmania - / india -;india
+... sin confirmar - / italia - / florencia -;italy
+saint etienne -;france
+córdoba(andalucía, españa);spain
+italia - / génova -;italy
+reino unido - / inglaterra -;uk
+segovia(castilla y león, españa);spain
+españa - / toledo -;spain
+india - / porbandar -;india
+alemania -;germany
+italia - / milà -;italy
+... sin confirmar - / francia - / reino unido -;nan
+... sin confirmar - / al-andalus - / españa -;spain
+... sin confirmar - / egipto - / akhmim - / siria -;africa
+marruecos -;africa
+japan;japan;nan
+china;china
+italy;italy
+turkey#@# istanbul;turkey
+france#@# lyons#@# lyon;france
+turkey#@# istanbul#@# bursa;turkey
+southern caucasus#@# northwestern iran;iran
+providence#@# rhode island;us
+turkey#@# istanbul;turkey
+u.s.a.#@# united states of america;us
+france#@# lyons#@# lyon;france
+turkey#@# istanbul#@# bursa;turkey
+ottoman empire;turkey
+france;france
+west bengal, baluchar;india
+new york;us
+uttar pradesh; varanasi;india
+india;india
+turkey;turkey
+rhode island;us
+myanmar; burma;india
+persia;iran
+pennsylvania; philadelphia;us
+west sumatra;india
+florence;italy
+uk;uk
+paris;france
+united states of america;us
+myanmar#@# burma#@# chin (st);india
+gujarat;india
+sicily;italy
+u.s.a.#@# united states of america#@# europe#@# china;nan
+sumatra;india
+turkey; bursa;turkey
+bhutan;india
+india#@# gujarat#@# saurashtra#@# kutch;india
+bursa;turkey
+sumatera selatan, palembang;india
+iran, safavid dynasty, shafi abbasi style design;iran
+germany#@# colmar@#@ colmar;germany
+france#@# lyons;france
+india#@# gujarat, probably patan;india
+scotland, probably paisley;uk
+u.s.a.#@# united states of america; egypt;nan
+(for the european (possibly french) market;nan
+myanmar#@# burma#@# arakan (state)#@# chin (state);inda
+massachusetts#@# wrentham;us
+spain;spain
+possibly florence;italy
+laos;india
+india, gujarat, kutch, or pakistan, sindh;india
+france#@# paris;france
+london;uk
+tibet;tibet
+italy#@# florence;italy
+myanmar#@# burma#@# arakan (state)
+varanasi;india
+india#@# varanasi;india
+gujarat; saurashtra; kutch; jamnagar
+syria
+thailand#@# siam#@# cambodia;nan
+portugal;portugal
+china#@# japan;nan
+england#@# france;nan
+spain#@# granada;spain
+myanmar; burma;india
+uttar pradesh#@# varanasi;india
+bursa;turkey
+turkey#@# bursa;turkey
+uttar pradesh#@# varanasi;india
+turkey#@# bursa;turkey
+(bursa);turkey
+genoa;italy
+lyons#@# lyon;france
+boston;us
+united states (made);us
+... sin confirmar - / marroc - azemmour - / españa - / italia -;nan
+bellary (made);india
+caen (made);france
+darjeeling (made);india
+lyons (weaving);france
+trichinopoly (made);india
+paris (joinery);france
+bhopal (made);india
+tatta (made);india
+kumbakonam (made);india
+ahmednagar (made);india
+uk (made);uk
+oudenaarde (made);belgium
+tournai (made);netherlands
+indore (made);india
+kangra (made);india
+scotland (made);uk
+chitradurga (made);india
+new york (made);us
+venice (made);italy
+... sin confirmar - / italia - / irán - / tabriz -;nan
+deccan (made);india
+lyon (woven);france
+uttar pradesh#@# varanasi;india
+myanmar#@# burma;india
+staffordshire (made);uk
+thatta (made);india
+rangpur (made);india
+bayeux (made);france
+newcastle upon tyne (printed);uk
+nepal (made);india
+punjab (pakistan) (made);india
+london (published);uk
+bursa;turkey
+
+

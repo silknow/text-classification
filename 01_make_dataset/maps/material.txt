@@ -1,0 +1,314 @@
+silk (textile);silk
+silk#@# brocade;
+silk thread;silk
+silk weaving;silk
+silk#@# knitted;silk
+silk (textile) ribbon;silk
+eri silk;silk
+silk knit nit;silk
+silk, plain weave and satin with supplementary warp patterning;silk
+silk (textile) silk thread;silk
+seda -;silk
+silk silk;silk
+silk;silk
+silk netting;silk
+silk satin brocade;silk
+silk, jacquard-woven;silk
+silk thread, weaving, sewing;silk
+seda verde;silk
+silk satin weaving;silk
+silk, woven;silk
+silk thread, weaving;silk
+hilo seda;silk
+silk thread silk (textile);
+silk#@# embroidery;silk
+woven silk;silk
+printed silk;silk
+silk lampas;silk
+seda;silk
+dyed silk;silk
+silk silk thread;silk
+silk#@# lace;silk
+brocaded silk;silk
+embroidered silk;silk
+silk damask;silk
+soie, taffetas, broché;silk
+silk velvet;silk
+silk tapestry (<i>kesi</i>);silk
+jacquard-woven figured silk;silk
+silk bobbin lace;silk
+silk knit;silk
+silk, woven and embroidered;silk
+silk, plain weave, supplementary weft patterned;silk
+silk twill weave; printed;silk
+silk plain weave (taffeta) with warp stripes and brocaded with silk;silk
+jacquard woven silk;silk
+soie, satin, broché;silk
+silk#@# damask;silk
+silk net silk thread;silk
+silk plain weave; printed;silk
+silk plain weave embroidered with silk;silk
+silk brocade;silk
+seda hilo;silk
+silk satin silk thread;silk
+silk (textile) silk thread gold-wrapped thread;metal_thread
+silk (fiber);silk
+silk lace;silk
+silk satin embroidered with silk;silk
+woven figured silk;silk
+painted silk satin;silk
+brocaded silk satin;silk
+silk#@# knitting;silk
+figured silk;silk
+silk netting with silk embroidery;silk
+silk satin;silk
+pictures: ink and colour on silk#@# text: ink on silk#@#;nan
+silk printing ink;nan
+silk (textile) printing ink ink;nan
+silk (textile) ink;nan
+silk ink;nan
+ink and colour on silk;nan
+ink on silk;nan
+cotton silk (textile) mashru;cotton_silk
+cotton and silk#@# embroidery;cotton_silk
+satin silk;silk
+silk satin gold-wrapped thread silk thread;silk_metal_thread
+silk (textile) silk thread gold-wrapped thread silver-wrapped thread;silk_metal_thread
+silk on silk;silk
+silk plain weave, supplementary warp and weft patterned;silk
+silk taffeta;silk
+silk#@# taffeta;silk
+knitted cotton;non_silk
+linen needlepoint lace;non_silk
+cotton plain weave embroidered with silk;cotton_silk
+cotton plain weave, printed;non_silk
+wool and silk; tapestry weave;silk_wool
+cotton and silk@#@ embroidery;cotton_silk
+cotton plain-weave, printed;non_silk
+wool silk (fiber);silk_wool
+wool and silk#@# tapestry weave;silk_wool
+silk (textile) cotton mashru;cotton_silk
+cotton lace;non_silk
+llana - / seda -;silk_wool
+silk lace;silk
+silk plain weave, supplementary warp patterned;silk
+muga silk;silk
+cotton knit;non_silk
+linen plain weave embroidered with linen;non_silk
+cotton plain-weave with cotton embroidery;non_silk
+seda - / fil metàl·lic -;silk_metal_thread
+silk metal thread;silk_metal_thread
+silk (textile) metal thread;silk_metal_thread
+gold thread silk thread;silk_metal_thread
+leather;non_silk
+leather silk;leather_silk
+silk leather;leather_silk
+patent leather;non_silk
+suede, leather;non_silk
+suede;non_silk
+suede, printed; leather;non_silk
+leather, embroidery;non_silk
+satin silk leather;non_silk
+linen;non_silk
+silk (textile) gold-wrapped thread silver-wrapped thread;silk_metal_thread
+velvet silk (textile) gold-wrapped thread;silk_metal_thread
+linen bobbin lace;non_silk
+silk thread metal thread;silk_metal_thread
+cotton and silk#@# embroidery;cotton_silk
+embroidered cotton;non_silk
+linen plain weave embroidered with silk;linen_silk
+wool plain weave embroidered with silk;silk_wool
+gold-wrapped thread silk;silk_metal_thread
+printed cotton;non_silk
+linen, embroidery;non_silk
+tapestry weave (wool warp#@# wool and silk wefts);silk_wool
+cotton silk (textile);cotton_silk
+wool;non_silk
+printed cotton plain weave;non_silk
+cotton;non_silk
+linen and silk; linen_silk
+cotton and beadwork;non_silk
+seda - / lli -;linen_silk
+silk (textile) linen (material) silk thread linen thread;linen_silk
+silk (textile) gold-wrapped thread;silk_metal_thread
+linen silk thread;linen_silk
+silk (textile) gold thread;silk_metal_thread
+linen and silk#@# embroidery;linen_silk
+tapestry weave (wool warp#@# wool and silk wefts);silk_wool
+seda - / fil metàl·lic entorxat -;silk_metal_thread
+wool silk;silk_wool
+silk cotton mashru;cotton_silk
+cotton printed;non_silk
+silk (textile) silk thread metal thread;silk_metal_thread
+embroidery;nan
+lace;nan
+silk gold-wrapped thread;silk_metal_thread
+cotton print;non_silk
+silk thread gold-wrapped thread gold;silk_metal_thread
+linen with cotton embroidery;nan
+silk thread linen;linen_silk
+silk gold thread;silk_metal_thread
+cotton silk thread;cotton_silk
+cotton and silk#@# embroidery;cotton_silk
+silk (textile) cotton;cotton_silk
+wool, silk (20-21 warps per inch, 8-9 per cm.);silk_wool
+linen (material) silk thread;linen_silk
+silk silver;silk_metal_thread
+linen damask;non_silk
+cotton plain weave;non_silk
+silk wool;silk_wool
+wool knit;non_silk
+seda - / cotó -;cotton_silk
+wool yarn silk thread;silk_wool
+linen weaving;non_silk
+wool and silk tapestry;silk_wool
+embroidered wool;non_silk
+cotton mashru silk;cotton_silk
+cotton (textile) silk (textile);cotton_silk
+silk (textile) cotton (textile);cotton_silk
+silk (textile) wool (textile);silk_wool
+cotton yarn silk thread;cotton_silk
+cotton silk textile;cotton_silk
+tapestry weave (wool warp; wool wefts);non_silk
+silk (textile) silk thread gold thread;silk_metal_thread
+silver-wrapped thread silk;silk_metal_thread
+cotton with cotton embroidery;non_silk
+silk silver-wrapped thread;silk_metal_thread
+silk silver thread;silk_metal_thread
+silk satin damask brocaded with silk and metal wrapped thread;silk_metal_thread
+cotton knit with silk embroidery;cotton_silk
+silk (textile) silver thread;silk_metal_thread
+silk metal;silk_metal_thread
+seda - / hilo metálico -;silk_metal_thread
+silk (textile) linen;linen_silk
+woven cotton and silk;cotton_silk
+wool, silk (21-23 warps per inch, 8-9 per cm.);silk_wool
+silk and gold-wrapped thread, woven;silk_metal_thread
+seda - / lino -;linen_silk
+tapestry woven in wool and silk;silk_wool
+silk metallic yarn;silk_metal_thread
+silk (warps) and cotton (wefts), woven;cotton_silk
+silk linen;linen_silk
+lino seda;linen_silk
+cotton and silk, woven;cotton_silk
+soie, satin, velours au sabre, imprimé sur chaîne;nan
+linen silk;linen_silk
+seda - / fibras vegetales -;nan
+woven silk and gold-wrapped thread;silk_metal_thread
+gold-wrapped silk thread;silk_metal_thread
+silk thread, metal thread, weaving;silk_metal_thread
+seda - / oro de xipre o membrana dorada -;nan
+cotton silk;cotton_silk
+hilo metálico seda;silk_metal_thread
+cotton yarn, silk thread, weaving, embroidering;cotton_silk
+seda lino;linen_silk
+jacquard-woven silk;silk
+seda - / hilo metálico entorchado -;silk_metal_thread
+woven silk, brocaded with gold-wrapped thread;silk_metal_thread
+woven silk and cotton;cotton_silk
+jacquard-woven silk, wool and cotton;nan
+jacquard-woven silk, wool and cotton#@#wool/cotton;nan
+cotton yarn, silk thread, weaving, embroidering, sewing;cotton_silk
+seda lana;silk_wool
+tapestry weave (wool warp#@# wool wefts);non_silk
+painted silk;silk
+woven wool and silk;silk_wool
+seda - / algodón -;cotton_silk
+silk and silver-wrapped thread, woven;silk_metal_thread
+tapestry-woven in wool and silk;silk_wool
+silk (textile) gold-wrapped thread silk thread;silk_metal_thread
+... sin confirmar - / seda -;nan
+silk embroidery on linen;linen_silk
+silk, linen, silk thread, linen thread#@# hand-woven, hand-sewn;linen_silk
+silk thread, metal thread, weaving, sewing;metal_thread
+woven silk, gold-wrapped and silver-wrapped thread brocade;silk_metal_thread
+cotton, silk#@# knitted;cotton_silk
+gold thread silk;silk_metal_thread
+linen linen thread silk thread;linen_silk
+woven silk, gold-wrapped thread brocade;silk_metal_thread
+wool embroidered with silk;silk_wool
+linen lace;non_silk
+silk, linen, silk thread, linen thread#@# hand-woven brocade, hand-sewn;linen_silk
+cotton yarn, silk thread, weaving, embroidering, sewing.;cotton_silk
+block-printed silk;silk
+silk cotton;cotton_silk
+algodón seda;silk_wool
+lino [crudo] seda [varios colores];linen_silk
+cotton (textile) silk thread;cotton_silk
+silk satin gold-wrapped thread;silk_metal_thread
+hilo metálico [plateado.] seda [plateado.];silk_metal_thread
+wool silk thread;silk_wool
+silver-wrapped thread gold-wrapped thread silk;silk_metal_thread
+seda - / fil d'or -;silk_metal_thread
+embroidered cotton#@# beadwork;non_silk
+silk (textile) metal thread silk thread;silk_metal_thread
+silk (textile) metal-wrapped thread;silk_metal_thread
+woven silk and wool;silk_wool
+linen, lace;non_silk
+silk and silver metal thread brocade;silk_metal_thread
+cotton embroidery;non_silk
+printed wool;non_silk
+cotton plain weave embroidered with cotton;non_silk
+linen plain weave embroidered with linen and silk;linen_silk
+wool, silk (19-21 warps per inch, 8 per cm.);silk_wool
+wool, silk (20-22 warps per inch, 8 per cm.);silk_wool
+wool, silk (16-20 warps per inch, 6-8 per cm.);silk_wool
+wool, silk (16-18 warps per inch, 7 per cm.);silk_wool
+linen and silk#@# brocade;linen_silk
+cotton, embroidered with silk in double darning and double running in;cotton_silk
+cotton, silk and gold-wrapped thread, woven;nan
+silk, gold-wrapped and silver-wrapped thread, woven;silk_metal_thread
+cotton yarn, silk thread, metal thread, weaving, sewing;cotton_silk
+woven cotton, silk and gold-wrapped thread;nan
+silk thread, metal thread, weaving.;silk_metal_thread
+silk and cotton, woven;cotton_silk
+linen silk (textile);linen_silk
+hilo metálico dorado seda;silk_metal_thread
+embroidered linen canvas with silk, gold and silver threads;nan
+soie, or, satin à aspect damassé, broché;silk
+embroidered linen with silk and metal threads;nan
+silk brocade with gold thread;silk_metal_thread
+seda - / lentejuelas - / hilo metálico plateado - / hilo metálico dora;silk_metal_thread
+silk metallic thread;silk_metal_thread
+woven silk and metal thread;silk_metal_thread
+seda - / hilo frisé -;nan
+tie-dyed silk;nan
+cotton yarn, silk thread, metal thread, weaving, printing, sewing;nan
+polychrome figured silk;nan
+seda - / espejuelos -;silk
+cotton yarn, silk thread, metal thread, weaving, printing, sewing.;
+seda - / hilo metálico - / chenilla -;nan
+seda marfil;nan
+soie, imprimé sur chaîne, faille;nan
+woven in silk and mounted on card;nan
+palisandro de río seda;nan
+linen embroidered with silk;linen_silk
+seda lino [?];nan
+linen, embroidered with silk in surface darning on the diagonal over t;linen_silk
+hilo metálico [dorado.] seda [dorado.];silk_metal_thread
+cotton yarn, silk thread, metal thread, weaving, embroidering, sewing;
+tapestry woven in silk and wool;silk_wool
+hilo metálico plateado seda;silk_metal_thread
+soie, satin à aspect damassé, broché;nan
+seda - / fibras vegetales - / lino -;linen_silk
+embroidered cotton with silk;cotton_silk
+brocaded silk with gold threads;islk_metal_thread
+woven silk, gold wire;silk_metal_thread
+seda [dorado.] hilo metálico [dorado.];silk_metal_thread
+woven silk (warps) and cotton (wefts);cotton_silk
+silk thread, metal thread, weaving, sewing.;silk_metal_thread
+wool, embroidered with silk in cross stitch;silk_wool
+silk damask, with satin weave pattern on a twill weave ground;silk
+woven silk and wool double cloth;silk_wool
+wool and silk;silk_wool
+tapestry woven in wool and silk on a woollen warp;silk_wool
+silk gauze;silk
+cotton, embroidered with silk;cotton_silk
+lana seda;silk_wool
+linen, embroidered with silk in atma (laid and couched with a couched;linen_silk
+cotton and silk warp ikat;cotton_silk
+silk and gold-wrapped thread, woven and brocaded;silk_metal_thread
+embroidered linen with silk;linen_silk
+tapestry, woven in wool and silk;silk_wool
+seda hilo metálico;silk_metal_thread
+woven silk satin, brocaded with gold-wrapped thread and silk thread;silk_metal_thread

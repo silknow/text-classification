@@ -1,0 +1,102 @@
+woven;weaving
+weaving;weaving
+printed;printing
+embroidering;embroidering
+weaving embroidering;embroidering_weaving
+embroidery;embroidering
+woven brocaded;brocading_weaving
+woven embroidered;embroidering_weaving
+embroidered;embroidering
+tapestry;tapestry
+hand sewing;sewing
+hand weaving hand sewing;sewing_weaving
+etching (printing process);printing
+brocading;brocading
+hand sewing hand embroidery;embroidering_sewing
+brocaded;brocading
+printing;printing
+drawn;drawing
+hand embroidery;embroidering
+weaving dyeing;dyeing_weaving
+woven applied work;weaving
+sewing;sewing
+brocaded weaving;brocading_weaving
+brocade;brocading
+damask weaving;damask_weaving
+velvet weave;velvet_weaving
+satin weave embroidering;embroidering_sating
+weaving brocading;brocading_weaving
+ikat;dyeing
+painted;painting
+woven applied work embroidered;embroidering_weaving
+hand sewing hand embroidery plaiting;embroidering_sewing
+weaving embroidery;embroidering_weaving
+satin weave;satin_weaving
+weaving embroidery sewing;embroidery_weaving
+woven drawn;drawing_weaving
+woven ikat;dyeing_weaving
+weaving sewing;sewing_weaving
+brocado;brocading
+pintado;painting
+damasco;damask
+bordado;embroidering
+
+
+hand weaving brocading hand sewing;nan
+weaving embroidering sewing;nan
+woven couched;nan
+stitching;nan
+hand weaving hand embroidery hand sewing;nan
+knitting;nan
+bobbin lace making;nan
+carving gilding;nan
+doll-making;nan
+lace making;nan
+millinery;nan
+weaving knotting;nan
+teixit llavorat -
+lampás
+tècnica de brodat - / brodat manual - / tafetà -
+soie, taffetas, broché
+jacquard - / teixit llavorat -
+domàs - / teixit llavorat -
+brocatel
+terciopelo
+soie, satin, velours au sabre, imprimé sur chaîne
+vellut tallat llavorat -
+tafetán
+tècnica de brodat - / brodat manual - / setí -
+trama espolinada - / teixit llavorat -
+trama espolinada - / lampas - / teixit llavorat -
+samit - / teixit llavorat -
+aguada
+estampación (arte gráfico)
+tècnica de brodat - / brodat manual -;embroidering
+brocat - / teixit llavorat -
+tècnica de calada - / tècnica de tapís -
+tapicería
+raso
+soie, satin, broché
+soie, or, satin à aspect damassé, broché
+taqueté - / teixit llavorat -
+calado
+crepè - / tècnica d'estampació -
+soie, imprimé sur chaîne, faille
+brocatell - / trama llançada - / teixit llavorat -
+ensamblaje de caja y espiga talla (madera) tapizado damasco
+acanalat - / trama espolinada - / teixit llavorat -
+brocatell - / trama llançada - / lampas - / teixit llavorat -
+drap d'aresta - / teixit llavorat -
+tècnica de calada - / louisine - / tècnica de tapís -
+soie, satin à aspect damassé, broché
+efecte de bastes per trama de fons (trama liseré) - / trama espolinada
+bordado a la aguja tafetán [(lienzo)]
+laca (madera) aguada;nan
+tècnica de calada - / tafetà - / tècnica de tapís -
+soie, broché, faille
+raso [ligamento] damasco
+talla (madera) henchido dorado tapizado ensamblaje machihembrado
+tafetà - / tècnica de tapís -
+terciopelo tapizado talla (madera) ensamblaje
+domàs - / trama espolinada - / teixit llavorat -
+terciopelo bordado
