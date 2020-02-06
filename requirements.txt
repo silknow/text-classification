@@ -1,0 +1,9 @@
+sacremoses==0.0.38
+torch==1.4.0
+ftfy==5.6
+Unidecode==1.1.1
+pandas==0.25.1
+numpy==1.17.2
+tqdm==4.36.1
+Flask==1.1.1
+scikit_learn==0.22.1
