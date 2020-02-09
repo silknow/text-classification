@@ -13,9 +13,9 @@ class SilkNOWmodel():
         self.labels = None
         self.vocab = None
 
-    def load(self, model_load_path):
+    def load(self, model_path):
         """Load a SilkNOW text classification model."""
-        self.model, self.labels, self.vocab = dnnhelper.load(model_load_path)
+        self.model, self.labels, self.vocab = dnnhelper.load_model(model_path)
         self.loaded = True
 
     def classify_text(self, text, lang):
