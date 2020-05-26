@@ -3,6 +3,7 @@
 # author: Luis Rei < me@luisrei.com >
 
 import os
+import sys
 import torch
 from torch.utils.data import DataLoader
 from torch.optim import Adam
@@ -11,9 +12,14 @@ import pandas as pd
 from train import train
 from models import sn_create_default_model
 from csvtxtdataset import seq_collate_pad
-from vocabulary import VocabMultiLingual, sn_create_vocab
+from vocabulary import (VocabMultiLingual,
+                        sn_create_vocab,
+                        sn_vocab_from_multilingual_embeddings)
 from csvtxtdataset import CSVDatasetMultilingualMulticlass
-from vechelper import sn_create_embeddings
+from vechelper import (sn_create_embeddings,
+                       sn_load_embeddings,
+                       save_vectors_multilingual,
+                       export_vectors)
 from torchutil import predict_sko, predict_simple
 from evalhelper import report, save_classification
 from sklearn.metrics import confusion_matrix
@@ -90,16 +96,7 @@ def save_model(model_save_dir, model, labels, vocab):
     return None
 
 
-#
-# SNTXTCLASSIFY Commands
-#
-def train_model(train_file_path, embeddings_dir, col_tgt, model_save_dir,
-                all_embeddings=False):
-    """Train a SilkNOW text classification model."""
-    #
-    # embeddings and vocab
-    #
-
+def create_vocab_embs(train_file_path, embeddings_dir):
     # map pretrained embeddings files
     all_vec_files = [x for x in os.listdir(embeddings_dir)
                      if x.endswith('.vec')]
@@ -108,12 +105,53 @@ def train_model(train_file_path, embeddings_dir, col_tgt, model_save_dir,
 
     # create vocab
     vocab_text_path = train_file_path
-    if all_embeddings:
-        vocab_text_path = None
     vocab = sn_create_vocab(embeddings_files, vocab_text_path)
 
     # create embeddings
     embs = sn_create_embeddings(embeddings_files, vocab, vector_size=300)
+
+    return vocab, embs
+
+
+def create_embeddings(train_file_path, embeddings_dir, save_path):
+    vocab, embs = create_vocab_embs(train_file_path, embeddings_dir)
+    vec_size = embs.shape[1]
+    data = export_vectors(vocab, embs)
+    save_vectors_multilingual(save_path, data, vec_size)
+
+
+def load_vocab_embs(embeddings_path):
+    vocab = sn_vocab_from_multilingual_embeddings(embeddings_path)
+    embs = sn_load_embeddings(embeddings_path, vocab)
+
+    return vocab, embs
+
+
+#
+# SNTXTCLASSIFY Commands
+#
+def train_model(train_file_path,
+                embeddings_path,
+                col_tgt,
+                model_save_dir,
+                all_embeddings=False):
+    """Train a SilkNOW text classification model."""
+    #
+    # embeddings and vocab
+    #
+    vocab = None
+    embs = None
+
+    if os.path.isdir(embeddings_path):
+        vocab, embs = create_vocab_embs(train_file_path, embeddings_path)
+    elif os.path.isfile(embeddings_path):
+        vocab, embs = load_vocab_embs(embeddings_path)
+    else:
+        print('Embs not found')
+        sys.exit(1)
+    assert vocab is not None
+    assert embs is not None
+
     # load dataset
     pad = True
     slen = 300

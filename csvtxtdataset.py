@@ -9,6 +9,7 @@ import numpy as np
 import pandas as pd
 from torch.utils.data import Dataset
 from torch.nn.utils.rnn import pad_sequence, pack_sequence
+from textpreprocessor import sn_preprocess_text
 
 
 class CSVDatasetMultilingualMultilabel(Dataset):
@@ -35,6 +36,7 @@ class CSVDatasetMultilingualMultilabel(Dataset):
             # vectorize text
             text = df.iloc[idx][text_field]
             lang = df.iloc[idx][lang_field]
+            text = sn_preprocess_text(text, lang)
             text = self.vocab.sentence_to_multilingual_sequence(text, lang)
             text = self.vocab.sequence2ids(text)
             text = text[:seqlen]  # truncate text to seqlen
@@ -94,9 +96,15 @@ class CSVDatasetMultilingualMulticlass(Dataset):
             # vectorize text
             text = df.iloc[idx][text_field]
             lang = df.iloc[idx][lang_field]
-            text = self.vocab.sentence_to_multilingual_sequence(text, lang)
-            text = self.vocab.sequence2ids(text)
-            assert len(text) > 0
+            text = sn_preprocess_text(text, lang)
+            seq = self.vocab.sentence_to_multilingual_sequence(text, lang)
+            seq = self.vocab.sequence2ids(seq)
+            if len(seq) == 0:
+                print('Warn: Reverse will not work on this data')
+                print('Text results in empty sequence:')
+                print(text)
+                continue
+            text = seq
             text = text[:seqlen]  # truncate text to seqlen
             if pad:
                 text = ([0] * (seqlen - len(text))) + text

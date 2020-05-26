@@ -12,7 +12,8 @@ from collections import Counter
 
 import numpy as np
 
-from vechelper import load_vector_words
+from vechelper import (load_vector_words,
+                       load_vector_words_multilingual)
 from textpreprocessor import sn_preprocess_text
 
 
@@ -109,7 +110,7 @@ class Vocab(object):
 
         try:
             token = self.__getitem__(i)
-        except (ValueError, IndexError) as e:
+        except (ValueError, IndexError):
             if replace_error:
                 token = replace_error.format(str(i))
 
@@ -510,7 +511,7 @@ class VocabMultiLingual(Vocab):
             if vocab_mono.is_reserved(token):
                 continue
             pair = (lang, token)
-            self.add(pair)
+            self.add_token(pair)
 
     @staticmethod
     def sentence_to_multilingual_sequence(sentence, lang):
@@ -546,7 +547,7 @@ def sn_create_vocab(embeddings_files, data_file=None):
         for lang in embeddings_files:
             words = list(vector_words[lang])
             for word in words:
-                vocab.add((lang, word))
+                vocab.add_token((lang, word))
         return vocab
 
     # create vocabulary from text
@@ -564,5 +565,16 @@ def sn_create_vocab(embeddings_files, data_file=None):
                    if word in vector_words[lang]]
             # add
             vocab.add_sequence(seq)
+
+    return vocab
+
+
+def sn_vocab_from_multilingual_embeddings(embeddings_path):
+    vocab = VocabMultiLingual(sos=None, eos=None, unk=None)
+
+    # load vector words
+    pairs = load_vector_words_multilingual(embeddings_path)
+    for pair in pairs:
+        vocab.add_token(pair)
 
     return vocab
