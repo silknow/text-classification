@@ -42,6 +42,8 @@ def train(model, optim, criterion, train_iter, epochs, clip=0,
                 y = y.cuda()
             # forward
             output = model(x)
+            if type(output) == tuple:
+                output, _ = output
             # backward
             optim.zero_grad()
             loss = criterion(output, y)

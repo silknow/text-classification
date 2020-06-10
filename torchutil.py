@@ -56,7 +56,7 @@ def predict(model, data_iter):
     return y_prd
 
 
-def predict_sko(model, rnn_out, data_iter, mode):
+def predict_sko(model, data_iter, mode):
     model.eval()
     y_prd = []
     with torch.no_grad():
@@ -66,11 +66,11 @@ def predict_sko(model, rnn_out, data_iter, mode):
                 y = y.cuda()
 
             # forward
-            output = None
-            if rnn_out:
-                output, _ = model(x)
-            else:
-                output = model(x)
+            output = model(x)
+
+            # is hidden included
+            if type(output) == tuple:
+                output, _ = output
 
             if mode == 'multiclass':
                 output = output_to_multiclass(output, dim=1)
@@ -101,7 +101,29 @@ def predict_simple(model, data_iter):
             # forward
             output = model(x)
 
+            # is hidden included
+            if type(output) == tuple:
+                output, _ = output
+
             output = output_to_multiclass_pair(output, dim=1)
             y_prd.append(output)
 
     return y_prd
+
+
+def generate_hidden_vectors(model, data_iter):
+    model.eval()
+    hidden_vectors = []
+    with torch.no_grad():
+        for x, y in tqdm(data_iter):
+            if torch.cuda.is_available():
+                x = x.cuda()
+                y = y.cuda()
+
+            # forward
+            _, hidden = model(x)
+            hidden_vectors.append(hidden)
+
+    hidden_vectors = [h.cpu().numpy() for h in hidden_vectors]
+
+    return hidden_vectors

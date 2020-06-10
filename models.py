@@ -124,8 +124,14 @@ class TextCNN(nn.Module):
             x = self.fc_act(x)
 
         # map to classes and return
-        x = self.output(x)
-        return x
+        out = self.output(x)
+
+        # return with hidden outputs
+        if self.hidden_size > 0:
+            return out, x
+
+        # return without hidden
+        return out
 
 
 def sn_create_default_model(embeddings, slen, output_size):
@@ -135,6 +141,26 @@ def sn_create_default_model(embeddings, slen, output_size):
     kernel_sizes = (2, 3, 4)
     channels_out = (100, 100, 100)
     hidden_size = 0
+    activation = 'gelu'
+    alpha_dropout = True
+
+    model = TextCNN(embeddings, True, slen, output_size,
+                    dropout_p=dropout_p,
+                    kernel_sizes=kernel_sizes,
+                    channels_outs=channels_out,
+                    hidden_size=hidden_size,
+                    activation=activation,
+                    alpha_dropout=alpha_dropout)
+
+    return model
+
+
+def sn_create_multimodal_model(embeddings, slen, output_size, hidden_size=500):
+    """Create a model with the parameters defined for multimodal experiments.
+    """
+    dropout_p = 0.4
+    kernel_sizes = (2, 3, 4)
+    channels_out = (100, 100, 100)
     activation = 'gelu'
     alpha_dropout = True
 

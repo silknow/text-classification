@@ -10,7 +10,7 @@ from torch.optim import Adam
 import pandas as pd
 
 from train import train
-from models import sn_create_default_model
+from models import sn_create_default_model, sn_create_multimodal_model
 from csvtxtdataset import seq_collate_pad
 from vocabulary import (VocabMultiLingual,
                         sn_create_vocab,
@@ -20,8 +20,8 @@ from vechelper import (sn_create_embeddings,
                        sn_load_embeddings,
                        save_vectors_multilingual,
                        export_vectors)
-from torchutil import predict_sko, predict_simple
-from evalhelper import report, save_classification
+from torchutil import predict_sko, predict_simple, generate_hidden_vectors
+from evalhelper import report, save_classification, save_hidden_vectors
 from sklearn.metrics import confusion_matrix
 
 
@@ -41,6 +41,32 @@ def sn_get_model(embs, n_classes):  # noqa: C901
     wdecay = 0.0
 
     model = sn_create_default_model(embs, slen, n_classes)
+    collate_fn = seq_collate_pad
+
+    optim = Adam(filter(lambda p: p.requires_grad, model.parameters()),
+                 lr=lr, weight_decay=wdecay)
+
+    criterion = torch.nn.CrossEntropyLoss()
+
+    if torch.cuda.is_available():
+        model = model.cuda()
+        criterion = criterion.cuda()
+
+    return model, optim, criterion, collate_fn
+
+
+def sn_get_model_multimodal(embs, n_classes, hidden_size=500):  # noqa: C901
+    # create model, optimizer, loss
+    model = None
+    optim = None
+    criterion = None
+    collate_fn = None
+
+    slen = 300
+    lr = 0.005
+    wdecay = 0.0
+
+    model = sn_create_multimodal_model(embs, slen, n_classes, hidden_size)
     collate_fn = seq_collate_pad
 
     optim = Adam(filter(lambda p: p.requires_grad, model.parameters()),
@@ -134,7 +160,8 @@ def train_model(train_file_path,
                 embeddings_path,
                 col_tgt,
                 model_save_dir,
-                all_embeddings=False):
+                all_embeddings=False,
+                multimodal=False):
     """Train a SilkNOW text classification model."""
     #
     # embeddings and vocab
@@ -166,7 +193,14 @@ def train_model(train_file_path,
     clip = 1.0
     labels = trn.get_labels()
     n_classes = len(labels)
-    model, optim, criterion, collate_fn = sn_get_model(embs, n_classes)
+
+    # which model?
+    model, optim, criterion, collate_fn = None, None, None, None
+    if multimodal:
+        mocc = sn_get_model_multimodal(embs, n_classes)
+        model, optim, criterion, collate_fn = mocc
+    else:
+        model, optim, criterion, collate_fn = sn_get_model(embs, n_classes)
 
     trn_loader = DataLoader(trn, batch_size=batch_size, shuffle=True,
                             collate_fn=collate_fn)
@@ -199,8 +233,7 @@ def eval_model(model_load_path, test_file_path, col_tgt, confusion=False):
                             collate_fn=collate_fn)
 
     # predict
-    rnn_out = False
-    y_prd = predict_sko(model, rnn_out, tst_loader, 'multiclass')
+    y_prd = predict_sko(model, tst_loader, 'multiclass')
     y_tst = [lbl for _, lbl in tst]
     y_tst = torch.stack(y_tst).numpy()
 
@@ -234,8 +267,7 @@ def classify_csv(model_load_path, test_file_path, dest_file_path):
                             collate_fn=collate_fn)
 
     # predict
-    rnn_out = False
-    y_prd = predict_sko(model, rnn_out, tst_loader, 'multiclass')
+    y_prd = predict_sko(model, tst_loader, 'multiclass')
 
     # save
     save_classification(dest_file_path, y_prd, labels, tst)
@@ -268,3 +300,24 @@ def classify_text(model, labels, vocab, text_dict_list, add_index=False):
         rows.append(row)
 
     return rows
+
+
+def hidden_for_csv(model_load_path, test_file_path, dest_file_path):
+    # Load model
+    model, labels, vocab = load_model(model_load_path)
+
+    # Load data
+    slen = 300
+    pad = True
+    collate_fn = seq_collate_pad
+    tst = CSVDatasetMultilingualMulticlass(vocab, test_file_path, '\t',
+                                           'txt', 'lang', None, slen, pad,
+                                           labels)
+    tst_loader = DataLoader(tst, batch_size=1, shuffle=False,
+                            collate_fn=collate_fn)
+
+    # predict
+    hidden = generate_hidden_vectors(model, tst_loader)
+
+    # save
+    save_hidden_vectors(dest_file_path, hidden)

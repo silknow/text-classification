@@ -101,3 +101,9 @@ def results_append(dst, y_true, y_pred, labels, name, task):
     }
     with open(dst, 'w') as outfile:
         json.dump(res, outfile)
+
+
+def save_hidden_vectors(dst, hidden):
+    with open(dst, 'w') as fout:
+        for x in hidden:
+            np.savetxt(fout, x)

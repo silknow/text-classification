@@ -8,7 +8,8 @@ import argparse
 from dnnhelper import (train_model,
                        create_embeddings,
                        eval_model,
-                       classify_csv)
+                       classify_csv,
+                       hidden_for_csv)
 
 
 def parse_args():
@@ -39,7 +40,10 @@ The available commands are:
                               default='embeddings')
 
     train_parser.add_argument('--all-embeddings', action='store_true',
-                              help='Keep all Keep all word vectors')
+                              help='Keep all word vectors')
+
+    train_parser.add_argument('--multimodal', action='store_true',
+                              help='Multimodal model.')
 
     train_parser.add_argument('--model-save', type=str, help='save model path',
                               required=True)
@@ -74,7 +78,9 @@ The available commands are:
     classify_parser.add_argument('--data-input', type=str,
                                  help='input CSV path', required=True)
     classify_parser.add_argument('--data-output', type=str,
-                                 help='output CSV path', required=True)
+                                 help='output file path', required=True)
+    classify_parser.add_argument('--output-hidden', action='store_true',
+                                 help='output hidden vectors')
 
     args = parser.parse_args()
     return args
@@ -88,7 +94,8 @@ def main():
                     args.pretrained_embeddings,
                     args.target,
                     args.model_save,
-                    args.all_embeddings)
+                    args.all_embeddings,
+                    args.multimodal)
     elif args.command == 'embeddings':
         create_embeddings(args.data_train,
                           args.pretrained_embeddings,
@@ -96,7 +103,11 @@ def main():
     elif args.command == 'evaluate':
         eval_model(args.model_load, args.data_test, args.target)
     elif args.command == 'classify':
-        classify_csv(args.model_load, args.data_input, args.data_output)
+        if args.output_hidden:
+            hidden_for_csv(args.model_load, args.data_input,
+                           args.data_output)
+        else:
+            classify_csv(args.model_load, args.data_input, args.data_output)
 
 
 if __name__ == '__main__':
