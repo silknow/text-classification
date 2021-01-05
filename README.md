@@ -1,4 +1,4 @@
-# SilkNOW Text Classification
+# SILKNOW Text Classification
 
 ## Downloading the Trained Models
 Download the models:
