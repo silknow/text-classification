@@ -12,14 +12,18 @@ import pandas as pd
 from train import train
 from models import sn_create_default_model, sn_create_multimodal_model
 from csvtxtdataset import seq_collate_pad
-from vocabulary import (VocabMultiLingual,
-                        sn_create_vocab,
-                        sn_vocab_from_multilingual_embeddings)
+from vocabulary import (
+    VocabMultiLingual,
+    sn_create_vocab,
+    sn_vocab_from_multilingual_embeddings,
+)
 from csvtxtdataset import CSVDatasetMultilingualMulticlass
-from vechelper import (sn_create_embeddings,
-                       sn_load_embeddings,
-                       save_vectors_multilingual,
-                       export_vectors)
+from vechelper import (
+    sn_create_embeddings,
+    sn_load_embeddings,
+    save_vectors_multilingual,
+    export_vectors,
+)
 from torchutil import predict_sko, predict_simple, generate_hidden_vectors
 from evalhelper import report, save_classification, save_hidden_vectors
 from sklearn.metrics import confusion_matrix
@@ -43,8 +47,11 @@ def sn_get_model(embs, n_classes):  # noqa: C901
     model = sn_create_default_model(embs, slen, n_classes)
     collate_fn = seq_collate_pad
 
-    optim = Adam(filter(lambda p: p.requires_grad, model.parameters()),
-                 lr=lr, weight_decay=wdecay)
+    optim = Adam(
+        filter(lambda p: p.requires_grad, model.parameters()),
+        lr=lr,
+        weight_decay=wdecay,
+    )
 
     criterion = torch.nn.CrossEntropyLoss()
 
@@ -69,8 +76,11 @@ def sn_get_model_multimodal(embs, n_classes, hidden_size=500):  # noqa: C901
     model = sn_create_multimodal_model(embs, slen, n_classes, hidden_size)
     collate_fn = seq_collate_pad
 
-    optim = Adam(filter(lambda p: p.requires_grad, model.parameters()),
-                 lr=lr, weight_decay=wdecay)
+    optim = Adam(
+        filter(lambda p: p.requires_grad, model.parameters()),
+        lr=lr,
+        weight_decay=wdecay,
+    )
 
     criterion = torch.nn.CrossEntropyLoss()
 
@@ -86,15 +96,15 @@ def sn_get_model_multimodal(embs, n_classes, hidden_size=500):  # noqa: C901
 #
 def load_model(model_save_dir):
     # model
-    model_file = os.path.join(model_save_dir, 'model.pth')
+    model_file = os.path.join(model_save_dir, "model.pth")
     model = torch.load(model_file)
 
     # labels
-    labels_file = os.path.join(model_save_dir, 'labels.pth')
+    labels_file = os.path.join(model_save_dir, "labels.pth")
     labels = torch.load(labels_file)
 
     # vocab
-    vocab_file = os.path.join(model_save_dir, 'vocab.txt')
+    vocab_file = os.path.join(model_save_dir, "vocab.txt")
     vocab = VocabMultiLingual(sos=None, eos=None, unk=None)
     vocab.load(vocab_file)
 
@@ -108,15 +118,15 @@ def save_model(model_save_dir, model, labels, vocab):
         os.makedirs(model_save_dir)
 
     # model
-    model_file = os.path.join(model_save_dir, 'model.pth')
+    model_file = os.path.join(model_save_dir, "model.pth")
     torch.save(model, model_file)
 
     # labels
-    labels_file = os.path.join(model_save_dir, 'labels.pth')
+    labels_file = os.path.join(model_save_dir, "labels.pth")
     torch.save(labels, labels_file)
 
     # vocab
-    vocab_file = os.path.join(model_save_dir, 'vocab.txt')
+    vocab_file = os.path.join(model_save_dir, "vocab.txt")
     vocab.save(vocab_file)
 
     return None
@@ -124,10 +134,12 @@ def save_model(model_save_dir, model, labels, vocab):
 
 def create_vocab_embs(train_file_path, embeddings_dir):
     # map pretrained embeddings files
-    all_vec_files = [x for x in os.listdir(embeddings_dir)
-                     if x.endswith('.vec')]
-    embeddings_files = {x.split('.')[1]: os.path.join(embeddings_dir, x)
-                        for x in all_vec_files}
+    all_vec_files = [
+        x for x in os.listdir(embeddings_dir) if x.endswith(".vec")
+    ]
+    embeddings_files = {
+        x.split(".")[1]: os.path.join(embeddings_dir, x) for x in all_vec_files
+    }
 
     # create vocab
     vocab_text_path = train_file_path
@@ -156,12 +168,14 @@ def load_vocab_embs(embeddings_path):
 #
 # SNTXTCLASSIFY Commands
 #
-def train_model(train_file_path,
-                embeddings_path,
-                col_tgt,
-                model_save_dir,
-                all_embeddings=False,
-                multimodal=False):
+def train_model(
+    train_file_path,
+    embeddings_path,
+    col_tgt,
+    model_save_dir,
+    all_embeddings=False,
+    multimodal=False,
+):
     """Train a SilkNOW text classification model."""
     #
     # embeddings and vocab
@@ -174,7 +188,7 @@ def train_model(train_file_path,
     elif os.path.isfile(embeddings_path):
         vocab, embs = load_vocab_embs(embeddings_path)
     else:
-        print('Embs not found')
+        print("Embs not found")
         sys.exit(1)
     assert vocab is not None
     assert embs is not None
@@ -182,9 +196,9 @@ def train_model(train_file_path,
     # load dataset
     pad = True
     slen = 300
-    trn = CSVDatasetMultilingualMulticlass(vocab, train_file_path, '\t',
-                                           'txt', 'lang', col_tgt,
-                                           slen, pad)
+    trn = CSVDatasetMultilingualMulticlass(
+        vocab, train_file_path, "\t", "txt", "lang", col_tgt, slen, pad
+    )
     #
     # train model
     #
@@ -202,8 +216,9 @@ def train_model(train_file_path,
     else:
         model, optim, criterion, collate_fn = sn_get_model(embs, n_classes)
 
-    trn_loader = DataLoader(trn, batch_size=batch_size, shuffle=True,
-                            collate_fn=collate_fn)
+    trn_loader = DataLoader(
+        trn, batch_size=batch_size, shuffle=True, collate_fn=collate_fn
+    )
 
     train(model, optim, criterion, trn_loader, epochs, clip, None)
 
@@ -226,14 +241,15 @@ def eval_model(model_load_path, test_file_path, col_tgt, confusion=False):
     slen = 300
     pad = True
     collate_fn = seq_collate_pad
-    tst = CSVDatasetMultilingualMulticlass(vocab, test_file_path, '\t',
-                                           'txt', 'lang', col_tgt, slen, pad,
-                                           labels)
-    tst_loader = DataLoader(tst, batch_size=1, shuffle=False,
-                            collate_fn=collate_fn)
+    tst = CSVDatasetMultilingualMulticlass(
+        vocab, test_file_path, "\t", "txt", "lang", col_tgt, slen, pad, labels
+    )
+    tst_loader = DataLoader(
+        tst, batch_size=1, shuffle=False, collate_fn=collate_fn
+    )
 
     # predict
-    y_prd = predict_sko(model, tst_loader, 'multiclass')
+    y_prd = predict_sko(model, tst_loader, "multiclass")
     y_tst = [lbl for _, lbl in tst]
     y_tst = torch.stack(y_tst).numpy()
 
@@ -252,7 +268,9 @@ def eval_model(model_load_path, test_file_path, col_tgt, confusion=False):
         print(cm)
 
 
-def classify_csv(model_load_path, test_file_path, dest_file_path):
+def classify_csv(
+    model_load_path, test_file_path, dest_file_path, return_scores=False
+):
     # Load model
     model, labels, vocab = load_model(model_load_path)
 
@@ -260,17 +278,21 @@ def classify_csv(model_load_path, test_file_path, dest_file_path):
     slen = 300
     pad = True
     collate_fn = seq_collate_pad
-    tst = CSVDatasetMultilingualMulticlass(vocab, test_file_path, '\t',
-                                           'txt', 'lang', None, slen, pad,
-                                           labels)
-    tst_loader = DataLoader(tst, batch_size=1, shuffle=False,
-                            collate_fn=collate_fn)
+    tst = CSVDatasetMultilingualMulticlass(
+        vocab, test_file_path, "\t", "txt", "lang", None, slen, pad, labels
+    )
+    tst_loader = DataLoader(
+        tst, batch_size=1, shuffle=False, collate_fn=collate_fn
+    )
 
     # predict
-    y_prd = predict_sko(model, tst_loader, 'multiclass')
+    scores = None
+    y_prd = predict_sko(model, tst_loader, "multiclass", return_scores)
+    if return_scores:
+        y_prd, scores = y_prd
 
     # save
-    save_classification(dest_file_path, y_prd, labels, tst)
+    save_classification(dest_file_path, y_prd, labels, tst, scores)
 
 
 def classify_text(model, labels, vocab, text_dict_list, add_index=False):
@@ -280,11 +302,13 @@ def classify_text(model, labels, vocab, text_dict_list, add_index=False):
     pad = True
 
     df = pd.DataFrame(text_dict_list)
-    tst = CSVDatasetMultilingualMulticlass(vocab, df, None, 'txt', 'lang',
-                                           None, slen, pad, labels)
+    tst = CSVDatasetMultilingualMulticlass(
+        vocab, df, None, "txt", "lang", None, slen, pad, labels
+    )
 
-    tst_loader = DataLoader(tst, batch_size=1, shuffle=False,
-                            collate_fn=collate_fn)
+    tst_loader = DataLoader(
+        tst, batch_size=1, shuffle=False, collate_fn=collate_fn
+    )
 
     # predict
     y_prd = predict_simple(model, tst_loader)
@@ -294,9 +318,9 @@ def classify_text(model, labels, vocab, text_dict_list, add_index=False):
     for ii, p in enumerate(y_prd):
         class_idx, score = p
         label = labels[class_idx]
-        row = {'label': label, 'score': score}
+        row = {"label": label, "score": score}
         if add_index:
-            row['index'] = ii
+            row["index"] = ii
         rows.append(row)
 
     return rows
@@ -310,11 +334,12 @@ def hidden_for_csv(model_load_path, test_file_path, dest_file_path):
     slen = 300
     pad = True
     collate_fn = seq_collate_pad
-    tst = CSVDatasetMultilingualMulticlass(vocab, test_file_path, '\t',
-                                           'txt', 'lang', None, slen, pad,
-                                           labels)
-    tst_loader = DataLoader(tst, batch_size=1, shuffle=False,
-                            collate_fn=collate_fn)
+    tst = CSVDatasetMultilingualMulticlass(
+        vocab, test_file_path, "\t", "txt", "lang", None, slen, pad, labels
+    )
+    tst_loader = DataLoader(
+        tst, batch_size=1, shuffle=False, collate_fn=collate_fn
+    )
 
     # predict
     hidden = generate_hidden_vectors(model, tst_loader)

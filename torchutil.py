@@ -8,12 +8,17 @@ import numpy as np
 from tqdm import tqdm
 
 
-def output_to_multiclass(out, dim=1):
+def output_to_multiclass(out, dim=1, return_scores=False):
     """Converts output of an output layer to a class (id) via softmax
     and argmax."""
-    out = F.softmax(out, dim=dim)
-    out = torch.argmax(out, dim=dim)
-    return out
+    softmax_output = F.softmax(out, dim=dim)
+    class_ids = torch.argmax(softmax_output, dim=dim)
+
+    if return_scores:
+        scores = torch.max(softmax_output, dim=dim).values
+        return class_ids, scores
+
+    return class_ids
 
 
 def output_to_multiclass_pair(out, dim=1):
@@ -32,7 +37,7 @@ def output_to_multilabel(out, dim=None):
     """Converts output of an output layer to a class (id) via softmax
     and argmax."""
     out = torch.sigmoid(out)
-    out = (out > 0.5)
+    out = out > 0.5
     return out
 
 
@@ -56,9 +61,10 @@ def predict(model, data_iter):
     return y_prd
 
 
-def predict_sko(model, data_iter, mode):
+def predict_sko(model, data_iter, mode, return_scores=False):
     model.eval()
     y_prd = []
+    y_scr = []
     with torch.no_grad():
         for x, y in tqdm(data_iter):
             if torch.cuda.is_available():
@@ -72,20 +78,34 @@ def predict_sko(model, data_iter, mode):
             if type(output) == tuple:
                 output, _ = output
 
-            if mode == 'multiclass':
+            if mode == "multiclass" and return_scores:
+                output, scores = output_to_multiclass(
+                    output, dim=1, return_scores=True
+                )
+                output = output.item()
+                y_prd.append(output)
+                scores = scores.item()
+                y_scr.append(scores)
+
+            elif mode == "multiclass":
                 output = output_to_multiclass(output, dim=1)
                 output = output.item()
                 y_prd.append(output)
-            elif mode == 'multilabel':
+            elif mode == "multilabel":
                 output = output_to_multilabel(output, dim=1)
                 y_prd.append(output.cpu())
             else:
-                raise ValueError(f'Invalid mode: {mode}')
+                raise ValueError(f"Invalid mode: {mode}")
 
-    if mode == 'multiclass':
+    if mode == "multiclass":
         y_prd = np.array(y_prd)
-    elif mode == 'multilabel':
+    elif mode == "multilabel":
         y_prd = torch.cat(y_prd, dim=0).numpy()
+
+    if return_scores:
+        y_scr = np.array(y_scr)
+        return y_prd, y_scr
+
     return y_prd
 
 

@@ -12,14 +12,20 @@ from collections import Counter
 
 import numpy as np
 
-from vechelper import (load_vector_words,
-                       load_vector_words_multilingual)
+from vechelper import load_vector_words, load_vector_words_multilingual
 from textpreprocessor import sn_preprocess_text
 
 
 class Vocab(object):
-    def __init__(self, name='', pad='<PAD>', sos='<s>', eos='</s>',
-                 unk='<unk>', specials=None):
+    def __init__(
+        self,
+        name="",
+        pad="<PAD>",
+        sos="<s>",
+        eos="</s>",
+        unk="<unk>",
+        specials=None,
+    ):
         self.name = name
         self.pad = pad
         self.sos = sos
@@ -29,7 +35,7 @@ class Vocab(object):
 
         # ensure that pad exists
         if not self.pad:
-            self.pad = '<PAD>'
+            self.pad = "<PAD>"
             logging.warn("PAD token not specified - defaulting to `<PAD>`.")
 
         self.init_dicts()
@@ -66,10 +72,10 @@ class Vocab(object):
     def __getitem__(self, i):
         """Returns the token of the specified id."""
         if not isinstance(i, int):
-            raise ValueError('Invalid index type: {}'.format(type(i)))
+            raise ValueError("Invalid index type: {}".format(type(i)))
 
         if i >= len(self.id2token) or i < 0:
-            raise IndexError('The index (%d) is out of range.' % i)
+            raise IndexError("The index (%d) is out of range." % i)
 
         return self.id2token[i]
 
@@ -101,7 +107,7 @@ class Vocab(object):
         # or None if no_unk=True or no unknown token exists
         return None
 
-    def lookup_id(self, i, replace_error='<ERR:{}>'):
+    def lookup_id(self, i, replace_error="<ERR:{}>"):
         """Lookup the token associated with the given id (same as vocab[i])
         except if the token does not exist, replace it with an error token.
         This function is useful for analysing sequences i.e. debugging.
@@ -278,9 +284,11 @@ class Vocab(object):
         Returns total count of removed tokens.
         """
         # find out which tokens are not present in vocab_b
-        missing = [t for t in self.token2id
-                   if (t not in vocab_b)
-                   and (t not in self.reserved_tokens)]
+        missing = [
+            t
+            for t in self.token2id
+            if (t not in vocab_b) and (t not in self.reserved_tokens)
+        ]
 
         # remove them from this vocab
         c = self.reduce_stopwords(missing)
@@ -291,9 +299,11 @@ class Vocab(object):
         present in another vocabulary.
         """
         # find out the common tokens to both vocabs
-        present = [t for t in self.token2id
-                   if (t in vocab_b)
-                   and (t not in self.reserved_tokens)]
+        present = [
+            t
+            for t in self.token2id
+            if (t in vocab_b) and (t not in self.reserved_tokens)
+        ]
 
         # remove them from this vocab
         c = self.reduce_stopwords(present)
@@ -303,11 +313,11 @@ class Vocab(object):
         """Save vocabulary to a text file: token[space]count.
         The id will correspond to the line number.
         """
-        with open(filepath, 'w') as fout:
+        with open(filepath, "w") as fout:
             for ii in range(len(self.token2id)):
                 token = self.id2token[ii]
                 c = self.token2count[token]
-                print('{} {}'.format(token, c), file=fout)
+                print("{} {}".format(token, c), file=fout)
 
     def load(self, filepath):
         """Load vocabulary from a text file: token[space]count.
@@ -358,12 +368,16 @@ class Vocab(object):
 
     def ids2sentence(self, ids, remove_special=False):
         if remove_special:
-            return ' '.join(self.lookup_id(i) for i in ids
-                            if i >= self.reserved)
+            return " ".join(
+                self.lookup_id(i) for i in ids if i >= self.reserved
+            )
 
-        return ' '.join(self.lookup_id(i) for i in ids)
+        return " ".join(self.lookup_id(i) for i in ids)
 
-    def ids2sequence(self, ids):
+    def ids2sequence(self, ids, no_pad=False):
+        if no_pad:
+            pad_id = self.token2id[self.pad]
+            ids = [x for x in ids if x != pad_id]
         return [self.lookup_id(i) for i in ids]
 
     def load_from_embeddings(self, filepath, skip_header=True):
@@ -395,10 +409,12 @@ class Vocab(object):
         vsize_total = len(self)
         tokens_total = sum(counts_total)
         min_count_total = min(counts_total)
-        s = ('Current\n'
-             f'\tvsize={vsize_total}\n'
-             f'\ttokens={tokens_total}\n'
-             f'\tmin_count={min_count_total}\n')
+        s = (
+            "Current\n"
+            f"\tvsize={vsize_total}\n"
+            f"\ttokens={tokens_total}\n"
+            f"\tmin_count={min_count_total}\n"
+        )
         reduce_strings.append(s)
 
         # min_count (if tokens below min count where removed)
@@ -406,11 +422,13 @@ class Vocab(object):
         tokens_min = sum(counts_min)
         coverage_min = (tokens_min / tokens_total) * 100
         vsize_min = len(counts_min)
-        s = ('min\n'
-             f'\tvsize={vsize_min}\n'
-             f'\ttokens={tokens_min}\n'
-             f'\tmin_count={min_freq}\n'
-             f'\tcoverage={coverage_min:.1f}\n')
+        s = (
+            "min\n"
+            f"\tvsize={vsize_min}\n"
+            f"\ttokens={tokens_min}\n"
+            f"\tmin_count={min_freq}\n"
+            f"\tcoverage={coverage_min:.1f}\n"
+        )
         reduce_strings.append(s)
 
         # topk (if only the topk tokens where preserved)
@@ -419,50 +437,62 @@ class Vocab(object):
         coverage_topk = tokens_topk / tokens_total
         vsize_topk = topk
         min_count_topk = min(counts_topk)
-        s = ('topk\n'
-             f'\tvsize={vsize_topk}\n'
-             f'\ttokens={tokens_topk}\n'
-             f'\tmin_count={min_count_topk}\n'
-             f'\tcoverage={coverage_topk:.1f}\n')
+        s = (
+            "topk\n"
+            f"\tvsize={vsize_topk}\n"
+            f"\ttokens={tokens_topk}\n"
+            f"\tmin_count={min_count_topk}\n"
+            f"\tcoverage={coverage_topk:.1f}\n"
+        )
         reduce_strings.append(s)
 
         # percentile (if tokens below percentile where removed)
         min_count_percentile = np.percentile(counts_total, p)
-        counts_percentile = [c for c in counts_total
-                             if c >= min_count_percentile]
+        counts_percentile = [
+            c for c in counts_total if c >= min_count_percentile
+        ]
         tokens_percentile = sum(counts_percentile)
         coverage_percentile = (tokens_percentile / tokens_total) * 100
         vsize_percentile = len(counts_percentile)
-        s = ('Percentile\n'
-             f'\tvsize={vsize_percentile}\n'
-             f'\ttokens={tokens_percentile}\n'
-             f'\tmin_count={min_count_percentile}\n'
-             f'\tcoverage={coverage_percentile:.1f}\n')
+        s = (
+            "Percentile\n"
+            f"\tvsize={vsize_percentile}\n"
+            f"\ttokens={tokens_percentile}\n"
+            f"\tmin_count={min_count_percentile}\n"
+            f"\tcoverage={coverage_percentile:.1f}\n"
+        )
         reduce_strings.append(s)
 
         # done
-        return '\n'.join(reduce_strings)
+        return "\n".join(reduce_strings)
 
 
 class VocabMultiLingual(Vocab):
     """Entries in this vocabulary are (lang, token) pairs
     """
 
-    def __init__(self, name='', pad=('-', '<PAD>'), sos=('-', '<s>'),
-                 eos=('-', '</s>'), unk=('-', '<unk>'), specials=None):
+    def __init__(
+        self,
+        name="",
+        pad=("-", "<PAD>"),
+        sos=("-", "<s>"),
+        eos=("-", "</s>"),
+        unk=("-", "<unk>"),
+        specials=None,
+    ):
         super().__init__(name, pad, sos, eos, unk, specials)
 
     def save(self, filepath):
         """Save vocabulary to a text file: lang[space]token[space]count.
         The id will correspond to the line number.
         """
-        with open(filepath, 'w') as fout:
+        with open(filepath, "w") as fout:
             for ii in range(len(self.token2id)):
                 pair = self.id2token[ii]
                 lang, token = pair
 
                 c = self.token2count[pair]
-                print('{} {} {}'.format(lang, token, c), file=fout)
+                print("{} {} {}".format(lang, token, c), file=fout)
 
     def load(self, filepath):
         """Load vocabulary from a text file: lang[space]token[space]count.
@@ -475,7 +505,7 @@ class VocabMultiLingual(Vocab):
             for line in fin:
                 line = line.strip()
                 if not line:
-                    raise ValueError('Empy line in vocab file')
+                    raise ValueError("Empy line in vocab file")
                 lang, token, c = line.split()
                 pair = (lang, token)
                 c = int(c)
@@ -521,7 +551,7 @@ class VocabMultiLingual(Vocab):
     @staticmethod
     def sentence_to_monolingual(sentence_pairs):
         tokens = [token for _, token in sentence_pairs]
-        return ' '.join(tokens)
+        return " ".join(tokens)
 
 
 def sn_create_vocab(embeddings_files, data_file=None):
@@ -552,17 +582,18 @@ def sn_create_vocab(embeddings_files, data_file=None):
 
     # create vocabulary from text
     with open(data_file) as finp:
-        reader = csv.DictReader(finp, delimiter='\t', quoting=csv.QUOTE_NONE)
+        reader = csv.DictReader(finp, delimiter="\t", quoting=csv.QUOTE_NONE)
         for row in reader:
-            text = row['txt']
-            lang = row['lang']
+            text = row["txt"]
+            lang = row["lang"]
 
             text = sn_preprocess_text(text, lang)
             seq = vocab.sentence_to_multilingual_sequence(text, lang)
 
             # filter with vectors
-            seq = [(lang, word) for lang, word in seq
-                   if word in vector_words[lang]]
+            seq = [
+                (lang, word) for lang, word in seq if word in vector_words[lang]
+            ]
             # add
             vocab.add_sequence(seq)
 

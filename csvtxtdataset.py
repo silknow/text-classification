@@ -16,8 +16,9 @@ class CSVDatasetMultilingualMultilabel(Dataset):
     """Multilingual Multilabel text classification.
     """
 
-    def __init__(self, vocab, csv_file, sep, text_field, lang_field,
-                 label_start, seqlen):
+    def __init__(
+        self, vocab, csv_file, sep, text_field, lang_field, label_start, seqlen
+    ):
         # vocab
         self.vocab = vocab
         self.seqlen = seqlen
@@ -28,6 +29,7 @@ class CSVDatasetMultilingualMultilabel(Dataset):
 
         # csv
         df = pd.read_csv(csv_file, sep=sep)
+        df = df[df[text_field].notna()]
         self.labels = df.keys().tolist()[label_start:]
 
         # read/load text and labels
@@ -63,8 +65,18 @@ class CSVDatasetMultilingualMulticlass(Dataset):
     """Multilingual Multiclass text classification.
     """
 
-    def __init__(self, vocab, csv_file, sep, text_field, lang_field,
-                 label_field, seqlen, pad=False, labels=None):
+    def __init__(
+        self,
+        vocab,
+        csv_file,
+        sep,
+        text_field,
+        lang_field,
+        label_field,
+        seqlen,
+        pad=False,
+        labels=None,
+    ):
         # vocab
         self.vocab = vocab
         self.seqlen = seqlen
@@ -73,16 +85,21 @@ class CSVDatasetMultilingualMulticlass(Dataset):
 
         df = None
         if type(csv_file) == str:
-            types = {text_field: str, label_field: str, 'source': str,
-                     'file': str}
+            types = {
+                text_field: str,
+                label_field: str,
+                "source": str,
+                "file": str,
+            }
             df = pd.read_csv(csv_file, sep=sep, dtype=types)
         elif type(csv_file) == pd.core.frame.DataFrame:
             df = csv_file
         else:
-            raise ValueError('csv_file must be str or DataFrame')
+            raise ValueError("csv_file must be str or DataFrame")
 
         assert df is not None
 
+        df = df[df[text_field].notna()]
         self.df = df
 
         # read labels
@@ -100,8 +117,8 @@ class CSVDatasetMultilingualMulticlass(Dataset):
             seq = self.vocab.sentence_to_multilingual_sequence(text, lang)
             seq = self.vocab.sequence2ids(seq)
             if len(seq) == 0:
-                print('Warn: Reverse will not work on this data')
-                print('Text results in empty sequence:')
+                print("Warn: Reverse will not work on this data")
+                print("Text results in empty sequence:")
                 print(text)
                 continue
             text = seq
@@ -133,7 +150,7 @@ class CSVDatasetMultilingualMulticlass(Dataset):
 
     def reverse(self, idx):
         text, label = self.__getitem__(idx)
-        text = self.vocab.ids2sequence(text.numpy().tolist())
+        text = self.vocab.ids2sequence(text.numpy().tolist(), no_pad=True)
         text = self.vocab.sentence_to_monolingual(text)
         label = self.labels[label]
         return text, label

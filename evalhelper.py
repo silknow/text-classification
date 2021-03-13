@@ -21,21 +21,23 @@ def hamming_score(y_true, y_pred, normalize=True, sample_weight=None):
         if len(set_true) == 0 and len(set_pred) == 0:
             tmp_a = 1
         else:
-            tmp_a = len(set_true.intersection(set_pred)) / \
-                float(len(set_true.union(set_pred)))
+            tmp_a = len(set_true.intersection(set_pred)) / float(
+                len(set_true.union(set_pred))
+            )
         acc_list.append(tmp_a)
     return np.mean(acc_list)
 
 
 def report(y_true, y_pred, target_names):
-    report_pred = ''
+    report_pred = ""
     labels = list(set(list(y_true)))
 
-    report_pred = classification_report(y_true, y_pred, labels=labels,
-                                        target_names=target_names)
+    report_pred = classification_report(
+        y_true, y_pred, labels=labels, target_names=target_names
+    )
 
     acc_pred = accuracy_score(y_true, y_pred)
-    report_pred = report_pred + '\naccuracy:\t{}'.format(acc_pred)
+    report_pred = report_pred + "\naccuracy:\t{}".format(acc_pred)
 
     return report_pred
 
@@ -56,24 +58,36 @@ def save_errors(dst, y_true, y_pred, target_names, dataset):
         p = target_names[p]
         text, label = dataset.reverse(ii)
         assert label == t
-        source = dataset.df.iloc[ii]['dataset']
-        filename = dataset.df.iloc[ii]['filename']
-        rows.append({'filename': filename,
-                     'dataset': source, 'input': text, 'pred': p, 'true': t})
+        source = dataset.df.iloc[ii]["dataset"]
+        filename = dataset.df.iloc[ii]["filename"]
+        rows.append(
+            {
+                "filename": filename,
+                "dataset": source,
+                "input": text,
+                "pred": p,
+                "true": t,
+            }
+        )
     df = pd.DataFrame(rows)
-    df.to_csv(dst, sep='\t')
+    df.to_csv(dst, sep="\t")
 
 
-def save_classification(dst, y_pred, target_names, dataset):
+def save_classification(dst, y_pred, target_names, dataset, scores=None):
     y_pred = list(y_pred)
 
     rows = []
     for ii, p in enumerate(y_pred):
         p = target_names[p]
         text, _ = dataset.reverse(ii)
-        rows.append({'predicted': p})
+        if scores is not None:
+            score = scores[ii]
+            rows.append({"txt": text, "predicted": p, "score": score})
+        else:
+            rows.append({"txt": text, "predicted": p})
     df = pd.DataFrame(rows)
-    df.to_csv(dst, sep='\t', index_label='index')
+    print(f"Saving to {dst} ({len(df)})")
+    df.to_csv(dst, sep="\t", index=False)
 
 
 def results_append(dst, y_true, y_pred, labels, name, task):
@@ -82,10 +96,9 @@ def results_append(dst, y_true, y_pred, labels, name, task):
     r = report(y_true, y_pred, labels)
     lbl_true = [labels[v] for v in list(y_true)]
     lbl_pred = [labels[v] for v in list(y_pred)]
-    pr, rc, f1, sp = precision_recall_fscore_support(lbl_true, lbl_pred,
-                                                     beta=1.0,
-                                                     labels=labels,
-                                                     average='micro')
+    pr, rc, f1, sp = precision_recall_fscore_support(
+        lbl_true, lbl_pred, beta=1.0, labels=labels, average="micro"
+    )
     res = {}
     if os.path.isfile(dst):
         res = json.load(open(dst))
@@ -93,17 +106,17 @@ def results_append(dst, y_true, y_pred, labels, name, task):
     if not res.get(name):
         res[name] = {}
     res[name][task] = {
-        'accuracy': acc,
-        'f1': f1,
-        'precision': pr,
-        'recall': rc,
-        'report': r
+        "accuracy": acc,
+        "f1": f1,
+        "precision": pr,
+        "recall": rc,
+        "report": r,
     }
-    with open(dst, 'w') as outfile:
+    with open(dst, "w") as outfile:
         json.dump(res, outfile)
 
 
 def save_hidden_vectors(dst, hidden):
-    with open(dst, 'w') as fout:
+    with open(dst, "w") as fout:
         for x in hidden:
             np.savetxt(fout, x)
