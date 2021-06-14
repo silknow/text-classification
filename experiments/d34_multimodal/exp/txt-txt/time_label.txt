@@ -1,0 +1,15 @@
+['eighteenth century (dates CE)', 'fifteenth century (dates CE)', 'nineteenth century (dates CE)', 'seventeenth century (dates CE)', 'sixteenth century (dates CE)', 'twentieth century (dates CE)']
+                                precision    recall  f1-score   support
+
+ eighteenth century (dates CE)       0.62      0.88      0.73       190
+  fifteenth century (dates CE)       0.68      0.72      0.70        18
+ nineteenth century (dates CE)       0.76      0.63      0.69        65
+seventeenth century (dates CE)       0.75      0.20      0.32        59
+  sixteenth century (dates CE)       0.36      0.16      0.22        56
+  twentieth century (dates CE)       0.68      0.72      0.70        18
+
+                      accuracy                           0.63       406
+                     macro avg       0.64      0.55      0.56       406
+                  weighted avg       0.63      0.63      0.59       406
+
+accuracy:	0.6305418719211823

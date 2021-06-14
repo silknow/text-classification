@@ -1,0 +1,15 @@
+                                                          precision    recall  f1-score   support
+
+         http://data.silknow.org/vocabulary/facet/damask       0.83      0.90      0.86       315
+     http://data.silknow.org/vocabulary/facet/embroidery       0.82      0.79      0.80       136
+http://data.silknow.org/vocabulary/facet/other_technique       0.79      0.83      0.81       203
+ http://data.silknow.org/vocabulary/facet/printed_fabric       0.57      0.36      0.44        11
+  http://data.silknow.org/vocabulary/facet/resist_dyeing       0.17      0.10      0.12        10
+          http://data.silknow.org/vocabulary/facet/tabby       0.45      0.68      0.54        25
+         http://data.silknow.org/vocabulary/facet/velvet       0.88      0.72      0.80       178
+
+                                                accuracy                           0.81       878
+                                               macro avg       0.65      0.63      0.63       878
+                                            weighted avg       0.81      0.81      0.81       878
+
+accuracy:	0.806378132118451

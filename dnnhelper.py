@@ -291,8 +291,12 @@ def classify_csv(
     if return_scores:
         y_prd, scores = y_prd
 
+    ids = None
+    if tst.id_map is not None:
+        ids = tst.id_map
+
     # save
-    save_classification(dest_file_path, y_prd, labels, tst, scores)
+    save_classification(dest_file_path, y_prd, labels, tst, scores, ids)
 
 
 def classify_text(model, labels, vocab, text_dict_list, add_index=False):

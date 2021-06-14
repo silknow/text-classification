@@ -88,6 +88,7 @@ class CSVDatasetMultilingualMulticlass(Dataset):
             types = {
                 text_field: str,
                 label_field: str,
+                "obj": str,
                 "source": str,
                 "file": str,
             }
@@ -101,6 +102,12 @@ class CSVDatasetMultilingualMulticlass(Dataset):
 
         df = df[df[text_field].notna()]
         self.df = df
+
+        ids = []
+        self.id_map = None
+        if "obj" in df.columns:
+            self.id_map = []
+            ids = df["obj"].tolist()
 
         # read labels
         if labels:
@@ -118,8 +125,7 @@ class CSVDatasetMultilingualMulticlass(Dataset):
             seq = self.vocab.sequence2ids(seq)
             if len(seq) == 0:
                 print("Warn: Reverse will not work on this data")
-                print("Text results in empty sequence:")
-                print(text)
+                print(f"Text results in empty sequence: {text}")
                 continue
             text = seq
             text = text[:seqlen]  # truncate text to seqlen
@@ -138,6 +144,8 @@ class CSVDatasetMultilingualMulticlass(Dataset):
 
             # add
             self.data.append((text, label))
+            if "obj" in df.columns:
+                self.id_map.append(ids[idx])
 
     def __len__(self):
         return len(self.data)

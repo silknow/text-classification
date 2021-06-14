@@ -1,0 +1,14 @@
+                                precision    recall  f1-score   support
+
+ eighteenth century (dates CE)       0.83      0.86      0.84       464
+  fifteenth century (dates CE)       0.60      0.48      0.54        31
+ nineteenth century (dates CE)       0.61      0.61      0.61       168
+seventeenth century (dates CE)       0.51      0.55      0.53       170
+  sixteenth century (dates CE)       0.69      0.62      0.65       128
+  twentieth century (dates CE)       0.72      0.52      0.61        63
+
+                      accuracy                           0.71      1024
+                     macro avg       0.66      0.61      0.63      1024
+                  weighted avg       0.71      0.71      0.70      1024
+
+accuracy:	0.7060546875

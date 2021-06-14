@@ -1,0 +1,11 @@
+                                                        precision    recall  f1-score   support
+
+ http://data.silknow.org/vocabulary/facet/animal_fibre       0.74      1.00      0.85      1662
+ http://data.silknow.org/vocabulary/facet/metal_thread       0.00      0.00      0.00       303
+http://data.silknow.org/vocabulary/facet/vegetal_fibre       0.00      0.00      0.00       283
+
+                                              accuracy                           0.74      2248
+                                             macro avg       0.25      0.33      0.28      2248
+                                          weighted avg       0.55      0.74      0.63      2248
+
+accuracy:	0.7393238434163701

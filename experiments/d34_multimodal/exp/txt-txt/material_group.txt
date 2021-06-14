@@ -1,0 +1,12 @@
+['http://data.silknow.org/vocabulary/facet/animal_fibre', 'http://data.silknow.org/vocabulary/facet/metal_thread', 'http://data.silknow.org/vocabulary/facet/vegetal_fibre']
+                                                        precision    recall  f1-score   support
+
+ http://data.silknow.org/vocabulary/facet/animal_fibre       0.73      0.91      0.81       520
+ http://data.silknow.org/vocabulary/facet/metal_thread       0.74      0.38      0.50       145
+http://data.silknow.org/vocabulary/facet/vegetal_fibre       0.77      0.54      0.63       191
+
+                                              accuracy                           0.74       856
+                                             macro avg       0.75      0.61      0.65       856
+                                          weighted avg       0.74      0.74      0.72       856
+
+accuracy:	0.7371495327102804

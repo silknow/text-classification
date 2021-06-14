@@ -18,126 +18,115 @@ from unidecode import unidecode
 # CONSTANTS
 #
 NUMBER_WORDS_EN = {
-    '0': 'zero',
-    '1': 'one',
-    '2': 'two',
-    '3': 'three',
-    '4': 'four',
-    '5': 'five',
-    '6': 'six',
-    '7': 'seven',
-    '8': 'eight',
-    '9': 'nine',
+    "0": "zero",
+    "1": "one",
+    "2": "two",
+    "3": "three",
+    "4": "four",
+    "5": "five",
+    "6": "six",
+    "7": "seven",
+    "8": "eight",
+    "9": "nine",
 }
 
 NUMBER_WORDS_CA = {
-    '1': 'un',
-    '2': 'dos',
-    '3': 'tres',
-    '4': 'quatre',
-    '5': 'cinc',
-    '6': 'sis',
-    '7': 'set',
-    '8': 'vuit',
-    '9': 'nou',
+    "1": "un",
+    "2": "dos",
+    "3": "tres",
+    "4": "quatre",
+    "5": "cinc",
+    "6": "sis",
+    "7": "set",
+    "8": "vuit",
+    "9": "nou",
 }
 
 NUMBER_WORDS_ES = {
-    '1': 'uno',
-    '2': 'dos',
-    '3': 'tres',
-    '4': 'cuatro',
-    '5': 'cinco',
-    '6': 'seis',
-    '7': 'siete',
-    '8': 'ocho',
-    '9': 'nueve',
+    "1": "uno",
+    "2": "dos",
+    "3": "tres",
+    "4": "cuatro",
+    "5": "cinco",
+    "6": "seis",
+    "7": "siete",
+    "8": "ocho",
+    "9": "nueve",
 }
 
 RPLS = {
-    'ssilk': 'silk',
-    'inches': 'inches',
-    'length': 'length',
-    'jaqard': 'jacquard',
-    'jaquard': 'jacquard',
-    'italiantextile': 'italian textile',
-    'needleweaving': 'needle weaving',
-    'waistseam': 'waist seam',
-    'sleeveband': 'sleeve band',
-    'drawnwork': 'drawn work',
-    'needlework': 'needle work',
-    'needlewoven': 'needle woven',
-    'threadwork': 'thread work',
-    'needlecase': 'needle case',
-    'longsleeve': 'long sleeve',
-    'designerembroidery': 'designer embroidery',
-    '0': 'zero',
-    '1': 'one',
-    '2': 'two',
-    '3': 'three',
-    '4': 'four',
-    '5': 'five',
-    '6': 'six',
-    '7': 'seven',
-    '8': 'eight',
-    '9': 'nine',
-    'lampàs': 'lampas',
-    'esfumaturas': 'esfumado',
-    'madrids': 'madrid',
+    "ssilk": "silk",
+    "inches": "inches",
+    "length": "length",
+    "jaqard": "jacquard",
+    "jaquard": "jacquard",
+    "italiantextile": "italian textile",
+    "needleweaving": "needle weaving",
+    "waistseam": "waist seam",
+    "sleeveband": "sleeve band",
+    "drawnwork": "drawn work",
+    "needlework": "needle work",
+    "needlewoven": "needle woven",
+    "threadwork": "thread work",
+    "needlecase": "needle case",
+    "longsleeve": "long sleeve",
+    "designerembroidery": "designer embroidery",
+    "lampàs": "lampas",
+    "esfumaturas": "esfumado",
+    "madrids": "madrid",
 }
 RPLS_EN = {
-    'botehs': 'boteh',
-    'halbedier': 'halberdier',
-    'manuscruipt': 'manuscript',
-    'latchets': 'latchet',
-    'lustring': 'calendering',
-    'unplied': 'not plied',
-    'cannellé': 'canelle',
-    'canellé': 'canelle',
-    'clothiing': 'clothing',
-    'bizantinos': 'byzantine',
-    'backseam': 'back seam',
-    'unembroidered': 'not embroidered',
-    'emboidered': 'embroidered',
-    'floorspread': 'floor spread',
-    'overknit': 'over knit',
-    'overstitch': 'over stitch',
-    'underbodice': 'under bodice',
-    'undersleeve': 'under sleeve',
-    'handscreens': 'hand screens',
-    'backstitched': 'back stitched',
-    'regiion': 'region',
-    'lisere': 'edging',
-    'laceing': 'lacing',
-    'commmission': 'commission',
+    "botehs": "boteh",
+    "halbedier": "halberdier",
+    "manuscruipt": "manuscript",
+    "latchets": "latchet",
+    "lustring": "calendering",
+    "unplied": "not plied",
+    "cannellé": "canelle",
+    "canellé": "canelle",
+    "clothiing": "clothing",
+    "bizantinos": "byzantine",
+    "backseam": "back seam",
+    "unembroidered": "not embroidered",
+    "emboidered": "embroidered",
+    "floorspread": "floor spread",
+    "overknit": "over knit",
+    "overstitch": "over stitch",
+    "underbodice": "under bodice",
+    "undersleeve": "under sleeve",
+    "handscreens": "hand screens",
+    "backstitched": "back stitched",
+    "regiion": "region",
+    "lisere": "edging",
+    "laceing": "lacing",
+    "commmission": "commission",
 }
 RPLS_ES = {
-    'espolinadas': 'brocado',
-    'espolinada': 'brocado',
-    'espolinado': 'brocado',
-    'brochadas': 'brocado',
-    'brochada': 'brocado',
-    'esfumaturas': 'esfumado',
-    'esfumatura': 'esfumado',
-    'lampàs': 'lampas',
-    'éventails': 'eventail',
-    'beentjes': 'beentje',
-    'abanos': 'abano',
+    "espolinadas": "brocado",
+    "espolinada": "brocado",
+    "espolinado": "brocado",
+    "brochadas": "brocado",
+    "brochada": "brocado",
+    "esfumaturas": "esfumado",
+    "esfumatura": "esfumado",
+    "lampàs": "lampas",
+    "éventails": "eventail",
+    "beentjes": "beentje",
+    "abanos": "abano",
 }
 RPLS_CA = {
-    'espolinadas': 'brocades',
-    'espolinades': 'brocades',
-    'espolinat': 'brocades',
-    'espolinada': 'brocades',
-    'brochadas': 'brocades',
-    'lampàs': 'lampas',
-    'intensidad': 'intensitat',
-
+    "espolinadas": "brocades",
+    "espolinades": "brocades",
+    "espolinat": "brocades",
+    "espolinada": "brocades",
+    "brochadas": "brocades",
+    "lampàs": "lampas",
+    "intensidad": "intensitat",
 }
 
 
-cleanr = re.compile('<.*?>')
-cleanr_e = re.compile('<.*?>|&([a-z0-9]+|#[0-9]{1,6}|#x[0-9a-f]{1,6});')
+cleanr = re.compile("<.*?>")
+cleanr_e = re.compile("<.*?>|&([a-z0-9]+|#[0-9]{1,6}|#x[0-9a-f]{1,6});")
 
 
 def compose_f(funcs):
@@ -162,13 +151,13 @@ def char_name(char):
     try:
         return unicodedata.name(char).lower()
     except ValueError:
-        return ''
-    return ''
+        return ""
+    return ""
 
 
 def char_is_punct(char):
     """True if char is a punctuation character."""
-    return unicodedata.category(char).startswith('P')
+    return unicodedata.category(char).startswith("P")
 
 
 def fix_text(text):
@@ -180,8 +169,8 @@ def fix_text(text):
 def clean_html(s):
     """Uses a regular expression to remove leftover html tags in text.
     """
-    s = re.sub(cleanr, '', s)
-    s = re.sub(cleanr_e, '', s)
+    s = re.sub(cleanr, "", s)
+    s = re.sub(cleanr_e, "", s)
     return s
 
 
@@ -191,10 +180,10 @@ def normalize_quotes_and_dashes(text):
     res = []
     # fix dashes
     for c in text:
-        if not unicodedata.category(c) == 'Pd':  # "Punctuation, Dash"
+        if not unicodedata.category(c) == "Pd":  # "Punctuation, Dash"
             res.append(c)
         else:
-            res.append('-')
+            res.append("-")
     text = res
 
     # fix quotes
@@ -202,16 +191,20 @@ def normalize_quotes_and_dashes(text):
     # this should cover most common cases
     res = []
     for c in text:
-        if not unicodedata.category(c) in ['Pe', 'Ps', 'Pf', 'Pi']:
+        if not unicodedata.category(c) in ["Pe", "Ps", "Pf", "Pi"]:
             res.append(c)
         else:
             name = char_name(c)
-            if ('quot' in name or 'corner bracket' in name or
-                    'double' in name or 'fullwidth' in name):
+            if (
+                "quot" in name
+                or "corner bracket" in name
+                or "double" in name
+                or "fullwidth" in name
+            ):
                 res.append('"')  # replace
             else:
                 res.append(c)
-    text = ''.join(res)
+    text = "".join(res)
     # dumb quotes
     text = re.sub(r"''", r'"', text)
     text = re.sub(r"``", r'"', text)
@@ -223,8 +216,8 @@ def normalize_quotes_and_dashes(text):
 
 def strip_accents(text):
     """Strips accents from text."""
-    text = unicodedata.normalize('NFD', text)
-    text = ''.join([c for c in text if not unicodedata.combining(c)])
+    text = unicodedata.normalize("NFD", text)
+    text = "".join([c for c in text if not unicodedata.combining(c)])
     return text
 
 
@@ -240,18 +233,20 @@ def strip_punct(text):
         zero-tolerance -> zerotolerance
         example.com -> examplecom
     """
-    return ''.join(c for c in text if not char_is_punct(c))
+    return "".join(c for c in text if not char_is_punct(c))
 
 
-def replace_punct(text, replacement=' ', protect=''):
+def replace_punct(text, replacement=" ", protect=""):
     """Replaces punctuation (including quotes and dash) from text.
     If using whitespace (default) it is probably a good idea to call
     normalize_whitespace after.
     e.g.:
         doctor, who? -> doctor  who
     """
-    return ''.join(c if (not char_is_punct(c)) or (c in protect)
-                   else replacement for c in text)
+    return "".join(
+        c if (not char_is_punct(c)) or (c in protect) else replacement
+        for c in text
+    )
 
 
 def replace_string(text, replacements=None, whitespace=True):
@@ -263,7 +258,7 @@ def replace_string(text, replacements=None, whitespace=True):
         return text
     for ori, rpl in replacements.items():
         if whitespace:
-            rpl = ' ' + rpl + ' '
+            rpl = " " + rpl + " "
         text = text.replace(ori, rpl)
     return text
 
@@ -275,39 +270,38 @@ def normalize_unicode_punctuation(text):
     res = []
     for c in text:
         cat = unicodedata.category(c)[0]
-        if cat in ['P', 'N']:
+        if cat in ["P", "N"]:
             c = unidecode(c)
-        elif cat == 'S':
+        elif cat == "S":
             c = unidecode(c)
             if len(c) > 1:
                 # most commonly these will be things like EUR, (tm) and (r)
                 # we want to add a space before, if it is extra it will
                 # be removed by whitespace normalization
-                c = ' ' + c
+                c = " " + c
 
         if c:
             res.append(c)
-    return ''.join(res)
+    return "".join(res)
 
 
 def strip_non_printing(text):
     """Removes non-printing (including control) characters from text.
     (same as moses script).
     """
-    return ''.join([c for c in text if c.isprintable()])
+    return "".join([c for c in text if c.isprintable()])
 
 
 def strip_symbols(text):
     """Removes symbols (unicode category 'S').
     """
-    return ''.join(c for c in text
-                   if unicodedata.category(c)[0] != 'S')
+    return "".join(c for c in text if unicodedata.category(c)[0] != "S")
 
 
 def strip_digits(text):
     """Removes digits (number) charaters.
     """
-    return ''.join(c for c in text if not c.isdigit())
+    return "".join(c for c in text if not c.isdigit())
 
 
 def case_fold(text):
@@ -318,7 +312,7 @@ def case_fold(text):
 def normalize_whitespace(text):
     """Merges multiple consecutive whitespace characthers converting them to
     space (` `). Also strips whitespaces from start and end of the text."""
-    return ' '.join(text.split())
+    return " ".join(text.split())
 
 
 def str_strip(text):
@@ -338,22 +332,22 @@ def str_rstrip(text):
 
 def normalize_nfc(text):
     """Applies NFC normalization."""
-    return unicodedata.normalize('NFC', text)
+    return unicodedata.normalize("NFC", text)
 
 
 def normalize_nfd(text):
     """Applies NFD normalization."""
-    return unicodedata.normalize('NFD', text)
+    return unicodedata.normalize("NFD", text)
 
 
 def normalize_nfkc(text):
     """Applies NFKC normalization e.g. ™ to TM, ..."""
-    return unicodedata.normalize('NFKC', text)
+    return unicodedata.normalize("NFKC", text)
 
 
 def normalize_nfkd(text):
     """Applies NFKD normalization."""
-    return unicodedata.normalize('NFKD', text)
+    return unicodedata.normalize("NFKD", text)
 
 
 def sn_preprocessing_function():
@@ -361,8 +355,8 @@ def sn_preprocessing_function():
 
     Return: function to be used to preprocess text.
     """
-    punct_f1 = partial(replace_punct, replacement='', protect="'-")
-    punct_f2 = partial(replace_punct, replacement=' ', protect="'")
+    punct_f1 = partial(replace_punct, replacement="", protect="'-")
+    punct_f2 = partial(replace_punct, replacement=" ", protect="'")
     punct_f3 = partial(replace_punct, replacement=" ' ", protect="")
     replace_f = partial(replace_string, replacements=RPLS)
 
@@ -383,7 +377,7 @@ def sn_preprocessing_function():
     return compose_f(funcs)
 
 
-def sn_preprocess_text(text, lang='en'):
+def sn_preprocess_text(text, lang="en"):
     """SilkNOW: preprocess and tokenize text.
     Returns preprocessed and tokenized text as a space delimited sequence of
     tokens (i.e. returns a string).
@@ -393,11 +387,11 @@ def sn_preprocess_text(text, lang='en'):
     # tokenize
     tkz = MosesTokenizer(lang=lang)
     text = tkz.tokenize(text, return_str=True, escape=False)
-    if lang == 'ca':
+    if lang == "ca":
         text = replace_string(text, replacements=RPLS_CA)
-    elif lang == 'es':
+    elif lang == "es":
         text = replace_string(text, replacements=RPLS_ES)
-    elif lang == 'en':
+    elif lang == "en":
         text = replace_string(text, replacements=RPLS_EN)
 
     # preprocess

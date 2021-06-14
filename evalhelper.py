@@ -73,18 +73,22 @@ def save_errors(dst, y_true, y_pred, target_names, dataset):
     df.to_csv(dst, sep="\t")
 
 
-def save_classification(dst, y_pred, target_names, dataset, scores=None):
+def save_classification(
+    dst, y_pred, target_names, dataset, scores=None, ids=None
+):
     y_pred = list(y_pred)
 
     rows = []
     for ii, p in enumerate(y_pred):
         p = target_names[p]
         text, _ = dataset.reverse(ii)
+        row = {"txt": text, "predicted": p}
+
         if scores is not None:
-            score = scores[ii]
-            rows.append({"txt": text, "predicted": p, "score": score})
-        else:
-            rows.append({"txt": text, "predicted": p})
+            row["score"] = scores[ii]
+        if ids is not None:
+            row["id"] = ids[ii]
+        rows.append(row)
     df = pd.DataFrame(rows)
     print(f"Saving to {dst} ({len(df)})")
     df.to_csv(dst, sep="\t", index=False)
