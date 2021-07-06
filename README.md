@@ -1,17 +1,14 @@
 # SILKNOW Text Classification
 
 ## Downloading the Trained Models
-Download the models:
-    * [D3.3. version]()
+Download the models from Zenodo: [Models](https://zenodo.org/record/5070696)
 
 ## Requirements
 See `requirements.txt` they include the following:
 
     * A CUDA capable GPU
-    * Python and the following libraries:
-        * pytorch
-        * ftfy
-        * sacremoses
+    * Python and the following libraries shown in requirements.txt
+    * Aligned Embeddings (see below)
 
 ## Command Line Tool
 
